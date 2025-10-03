@@ -1,18 +1,17 @@
 package com.yumimi.game.models.inventory.items.crafts_items.D.legendary;
 
 import com.yumimi.game.models.inventory.items.crafts_items.CraftItems;
-import com.yumimi.game.utils.enums.Rarity;
-import com.yumimi.game.utils.enums.TypeItem;
+import com.yumimi.game.util.enums.CraftItemsType;
+import com.yumimi.game.util.enums.Rarity;
+import com.yumimi.game.util.enums.TypeItem;
 
 public class EternalFlame extends CraftItems {
 
     public EternalFlame() {
         setName("Eternal Flame");
-        setRarity(Rarity.Legendary);
+        setItem(CraftItemsType.EternalFlame);
+        setRarity(Rarity.LEGENDARY);
         setTypeItem(TypeItem.Craft_item);
-        setDamage(25);
-        setBonusCritDamage(8);
-        setBonusStrength(10);
         setPrice(165);
     }
     // Используется в: EmberCore, FlameTalisman
@@ -21,4 +20,6 @@ public class EternalFlame extends CraftItems {
     public void inUses() {
 
     }
+
+
 }

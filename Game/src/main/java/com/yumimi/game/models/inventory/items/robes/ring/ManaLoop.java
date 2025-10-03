@@ -1,15 +1,24 @@
 package com.yumimi.game.models.inventory.items.robes.ring;
 
-import com.yumimi.game.utils.enums.Rarity;
-import com.yumimi.game.models.inventory.items.RarityUtils;
-import com.yumimi.game.utils.enums.TypeItem;
-import com.yumimi.game.models.inventory.items.robes.Robes;
+import com.yumimi.game.util.descriptions.DescriptionUtil;
+import com.yumimi.game.util.enums.Rarity;
+import com.yumimi.game.util.rarity.RarityUtils;
+import com.yumimi.game.util.enums.TypeItem;
+import com.yumimi.game.models.inventory.items.robes.Robe;
 
-public class ManaLoop extends Robes {
+public class ManaLoop extends Robe {
+
+    public ManaLoop(){
+        init(RarityUtils.generateRandomRarity());
+    }
 
     public ManaLoop(Rarity rarity) {
+        init(rarity);
+    }
+
+    private void init(Rarity rarity) {
         setName("Mana Loop");
-        setDescription("Кольцо с кристаллом. Восстановление маны."); // Дописать
+        setDescription(DescriptionUtil.MANA_LOOP(this));
         setRarity(rarity);
         setTypeItem(TypeItem.Ring);
         setQuantity(1);
@@ -20,9 +29,9 @@ public class ManaLoop extends Robes {
     protected void applyStats(Rarity rarity) {
         var bonus = RarityUtils.applyRarityBonus(rarity, 0, 40, 25, 0.11, 0.02, 90);
         setDurability(bonus.durability());
-        setBonusMana(bonus.bonus1());
-        setBonusRegenMana(bonus.bonus2());
-        setBonusEvasion(bonus.bonus3());
+        setMana(bonus.bonus1());
+        setRegenMana(bonus.bonus2());
+        setEvasion(bonus.bonus3());
         setPrice(bonus.costItem());
     }
 

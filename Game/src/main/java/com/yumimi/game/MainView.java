@@ -1,15 +1,13 @@
 package com.yumimi.game;
 
 import com.yumimi.game.config.AppConfig;
+import com.yumimi.game.screens.ScreenManager;
 import com.yumimi.game.service.GameScreenService;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import lombok.RequiredArgsConstructor;
 
-
-@RequiredArgsConstructor
 public class MainView extends Application {
 
     private GameScreenService gameScreenService;
@@ -23,6 +21,9 @@ public class MainView extends Application {
 
     @Override
     public void start(Stage stage){
+        ScreenManager screenManager = AppConfig.getBeans(ScreenManager.class);
+        screenManager.setPrimaryStage(stage);
+
         root = new StackPane();
         showMainMenu();
 

@@ -1,4 +1,4 @@
-package com.yumimi.game.utils.enums;
+package com.yumimi.game.util.enums;
 
 public enum MagicType {
     Fire, //+10 INT, +50 Mana

@@ -1,18 +1,17 @@
 package com.yumimi.game.models.inventory.items.crafts_items.C.epic;
 
 import com.yumimi.game.models.inventory.items.crafts_items.CraftItems;
-import com.yumimi.game.utils.enums.Rarity;
-import com.yumimi.game.utils.enums.TypeItem;
+import com.yumimi.game.util.enums.CraftItemsType;
+import com.yumimi.game.util.enums.Rarity;
+import com.yumimi.game.util.enums.TypeItem;
 
 public class LightningCore extends CraftItems {
 
     public LightningCore() {
         setName("Lightning Core");
-        setRarity(Rarity.Epic);
+        setItem(CraftItemsType.LightningCore);
+        setRarity(Rarity.EPIC);
         setTypeItem(TypeItem.Craft_item);
-        setDamage(10);
-        setBonusIntelligence(5);
-        setBonusCritDamage(4);
         setPrice(85);
     }
 
@@ -20,4 +19,6 @@ public class LightningCore extends CraftItems {
     public void inUses() {
 
     }
+
+
 }

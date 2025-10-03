@@ -1,4 +1,4 @@
-package com.yumimi.game.utils.enums;
+package com.yumimi.game.util.enums;
 
 public enum TypeItem {
     Attack_Melee,

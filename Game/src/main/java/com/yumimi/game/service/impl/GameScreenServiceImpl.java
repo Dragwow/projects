@@ -1,6 +1,6 @@
 package com.yumimi.game.service.impl;
 
-import com.yumimi.game.screens.MenuScreen;
+import com.yumimi.game.screens.screens.MenuScreen;
 import com.yumimi.game.service.GameScreenService;
 import javafx.scene.layout.VBox;
 import lombok.AllArgsConstructor;

@@ -1,18 +1,17 @@
 package com.yumimi.game.models.inventory.items.crafts_items.D.legendary;
 
 import com.yumimi.game.models.inventory.items.crafts_items.CraftItems;
-import com.yumimi.game.utils.enums.Rarity;
-import com.yumimi.game.utils.enums.TypeItem;
+import com.yumimi.game.util.enums.CraftItemsType;
+import com.yumimi.game.util.enums.Rarity;
+import com.yumimi.game.util.enums.TypeItem;
 
 public class DemonHorn extends CraftItems {
 
     public DemonHorn() {
         setName("Demon Horn");
-        setRarity(Rarity.Legendary);
+        setItem(CraftItemsType.DemonHorn);
+        setRarity(Rarity.LEGENDARY);
         setTypeItem(TypeItem.Craft_item);
-        setDamage(5);
-        setBonusLifeSteal(0.03);
-        setBonusCritDamage(0.1);
         setPrice(65);
     }
     // Используется для крафта: HelmFromHell, AbyssEye
@@ -21,4 +20,6 @@ public class DemonHorn extends CraftItems {
     public void inUses() {
 
     }
+
+
 }

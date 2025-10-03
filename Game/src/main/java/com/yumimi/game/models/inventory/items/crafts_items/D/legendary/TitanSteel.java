@@ -1,18 +1,17 @@
 package com.yumimi.game.models.inventory.items.crafts_items.D.legendary;
 
 import com.yumimi.game.models.inventory.items.crafts_items.CraftItems;
-import com.yumimi.game.utils.enums.Rarity;
-import com.yumimi.game.utils.enums.TypeItem;
+import com.yumimi.game.util.enums.CraftItemsType;
+import com.yumimi.game.util.enums.Rarity;
+import com.yumimi.game.util.enums.TypeItem;
 
 public class TitanSteel extends CraftItems {
 
     public TitanSteel() {
         setName("Titan Steel");
-        setRarity(Rarity.Legendary);
+        setItem(CraftItemsType.TitanSteel);
+        setRarity(Rarity.LEGENDARY);
         setTypeItem(TypeItem.Craft_item);
-        setBonusArmour(30);
-        setBonusStrength(15);
-        setBonusBlockChance(3);
         setPrice(160);
     }
     // Используется в: HelmFromHell, SteelBoots
@@ -21,4 +20,5 @@ public class TitanSteel extends CraftItems {
     public void inUses() {
 
     }
+
 }

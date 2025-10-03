@@ -1,18 +1,17 @@
 package com.yumimi.game.models.inventory.items.crafts_items.B.rare;
 
 import com.yumimi.game.models.inventory.items.crafts_items.CraftItems;
-import com.yumimi.game.utils.enums.Rarity;
-import com.yumimi.game.utils.enums.TypeItem;
+import com.yumimi.game.util.enums.CraftItemsType;
+import com.yumimi.game.util.enums.Rarity;
+import com.yumimi.game.util.enums.TypeItem;
 
 public class ViciousClaw extends CraftItems {
 
     public ViciousClaw() {
         setName("Vicious Claw");
-        setRarity(Rarity.Rare);
+        setItem(CraftItemsType.ViciousClaw);
+        setRarity(Rarity.RARE);
         setTypeItem(TypeItem.Craft_item);
-        setBonusDexterity(2);
-        setBonusCritChance(1.5);
-        setBonusLifeSteal(0.5);
         setPrice(31);
     }
 
@@ -20,4 +19,6 @@ public class ViciousClaw extends CraftItems {
     public void inUses() {
 
     }
+
+
 }

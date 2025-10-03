@@ -1,18 +1,17 @@
 package com.yumimi.game.models.inventory.items.crafts_items.B.rare;
 
 import com.yumimi.game.models.inventory.items.crafts_items.CraftItems;
-import com.yumimi.game.utils.enums.Rarity;
-import com.yumimi.game.utils.enums.TypeItem;
+import com.yumimi.game.util.enums.CraftItemsType;
+import com.yumimi.game.util.enums.Rarity;
+import com.yumimi.game.util.enums.TypeItem;
 
 public class SilverDust extends CraftItems {
 
     public SilverDust() {
         setName("Silver Dust");
-        setRarity(Rarity.Rare);
+        setItem(CraftItemsType.SilverDust);
+        setRarity(Rarity.RARE);
         setTypeItem(TypeItem.Craft_item);
-        setBonusIntelligence(2);
-        setBonusCritChance(0.03);
-        setBonusMana(15);
         setPrice(24);
     }
     // Используется для крафта: SilverRing
@@ -21,4 +20,6 @@ public class SilverDust extends CraftItems {
     public void inUses() {
 
     }
+
+
 }

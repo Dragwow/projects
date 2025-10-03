@@ -1,18 +1,17 @@
 package com.yumimi.game.models.inventory.items.crafts_items.C.epic;
 
 import com.yumimi.game.models.inventory.items.crafts_items.CraftItems;
-import com.yumimi.game.utils.enums.Rarity;
-import com.yumimi.game.utils.enums.TypeItem;
+import com.yumimi.game.util.enums.CraftItemsType;
+import com.yumimi.game.util.enums.Rarity;
+import com.yumimi.game.util.enums.TypeItem;
 
 public class HardenedHide extends CraftItems {
 
     public HardenedHide() {
         setName("Hardened Hide");
-        setRarity(Rarity.Epic);
+        setItem(CraftItemsType.HardenedHide);
+        setRarity(Rarity.EPIC);
         setTypeItem(TypeItem.Craft_item);
-        setBonusArmour(10);
-        setBonusDexterity(3);
-        setBonusRegenHp(0.4);
         setPrice(75);
     }
     // Используется в: KnightPlate, RunicBoots
@@ -21,4 +20,6 @@ public class HardenedHide extends CraftItems {
     public void inUses() {
 
     }
+
+
 }

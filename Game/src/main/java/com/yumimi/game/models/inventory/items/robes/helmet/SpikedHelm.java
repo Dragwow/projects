@@ -1,15 +1,24 @@
 package com.yumimi.game.models.inventory.items.robes.helmet;
 
-import com.yumimi.game.utils.enums.Rarity;
-import com.yumimi.game.models.inventory.items.RarityUtils;
-import com.yumimi.game.utils.enums.TypeItem;
-import com.yumimi.game.models.inventory.items.robes.Robes;
+import com.yumimi.game.util.descriptions.DescriptionUtil;
+import com.yumimi.game.util.enums.Rarity;
+import com.yumimi.game.util.rarity.RarityUtils;
+import com.yumimi.game.util.enums.TypeItem;
+import com.yumimi.game.models.inventory.items.robes.Robe;
 
-public class SpikedHelm extends Robes {
+public class SpikedHelm extends Robe {
+
+    public SpikedHelm(){
+        init(RarityUtils.generateRandomRarity());
+    }
 
     public SpikedHelm(Rarity rarity) {
+        init(rarity);
+    }
+
+    private void init(Rarity rarity) {
         setName("Spiked Helm");
-        setDescription("Шлем с шипами. Увеличивает силу, крит-урон и броню."); // Дописать
+        setDescription(DescriptionUtil.SPIKED_HELM(this));
         setRarity(rarity);
         setTypeItem(TypeItem.Helmet);
         setQuantity(1);
@@ -20,9 +29,9 @@ public class SpikedHelm extends Robes {
     protected void applyStats(Rarity rarity) {
         var bonus = RarityUtils.applyRarityBonus(rarity, 0, 75, 6, 0.07, 0.1, 140);
         setDurability(bonus.durability());
-        setBonusStrength(bonus.bonus1());
-        setBonusCritChance(bonus.bonus2());
-        setBonusCritDamage(bonus.bonus3());
+        setStrength(bonus.bonus1());
+        setCritChance(bonus.bonus2());
+        setCritDamage(bonus.bonus3());
         setPrice(bonus.costItem());
     }
 
@@ -35,4 +44,6 @@ public class SpikedHelm extends Robes {
     public void ifUse() {
 
     }
+
+
 }

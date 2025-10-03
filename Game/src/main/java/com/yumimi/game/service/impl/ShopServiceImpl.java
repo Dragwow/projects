@@ -1,49 +1,45 @@
 package com.yumimi.game.service.impl;
 
-import com.yumimi.game.models.inventory.items.Item;
-import com.yumimi.game.models.inventory.items.ShopItem;
-import com.yumimi.game.models.player.Player;
-import com.yumimi.game.service.PlayerService;
+import com.yumimi.game.models.inventory.items.ItemFactory;
+import com.yumimi.game.models.shop.ShopItem;
 import com.yumimi.game.service.ShopService;
-import jakarta.annotation.PostConstruct;
-import lombok.AllArgsConstructor;
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 @Service
-@AllArgsConstructor
 public class ShopServiceImpl implements ShopService {
 
-    private Player player;
-    private final PlayerService playerService;
-    private final List<ShopItem> currentItem = new ArrayList<>();
-    private final Random random = new Random();
+    private final ObservableList<ShopItem> currentItem = FXCollections.observableArrayList();
+    private final ItemFactory itemFactory;
 
-    @PostConstruct
-    public void init(){
+    long lastUpdateTime = 0;
+    long REFRESH_INTERVAL = 5 * 60 * 1000;
 
-    }
-
-    @Override
-    public void getItem(Item item) {
-        player = playerService.getPlayer();
-        player.getInventory().addItem(item);
-    }
-
-    @Override
-    public void scheduleAutoRefresh() {
-
+    public ShopServiceImpl(ItemFactory itemFactory) {
+        this.itemFactory = itemFactory;
+        refreshItems();
     }
 
     @Override
     public void refreshItems() {
-
+        Platform.runLater(() -> {
+            currentItem.clear();
+            for (int i = 0; i < 10; i++) {
+                currentItem.add(new ShopItem(itemFactory.dropItems()));
+            }
+        });
     }
 
-    private ShopItem generateRandomShopItem(){
+    @Override
+    public ObservableList<ShopItem> getCurrentItems() {
+        long now = System.currentTimeMillis();
 
+        if (now - lastUpdateTime >= REFRESH_INTERVAL) {
+            refreshItems();
+        }
+        return currentItem;
     }
+
 }

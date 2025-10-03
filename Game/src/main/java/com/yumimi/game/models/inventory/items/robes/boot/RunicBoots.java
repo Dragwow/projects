@@ -1,15 +1,24 @@
 package com.yumimi.game.models.inventory.items.robes.boot;
 
-import com.yumimi.game.utils.enums.Rarity;
-import com.yumimi.game.models.inventory.items.RarityUtils;
-import com.yumimi.game.utils.enums.TypeItem;
-import com.yumimi.game.models.inventory.items.robes.Robes;
+import com.yumimi.game.util.descriptions.DescriptionUtil;
+import com.yumimi.game.util.enums.Rarity;
+import com.yumimi.game.util.rarity.RarityUtils;
+import com.yumimi.game.util.enums.TypeItem;
+import com.yumimi.game.models.inventory.items.robes.Robe;
 
-public class RunicBoots extends Robes {
+public class RunicBoots extends Robe {
+
+    public RunicBoots(){
+        init(RarityUtils.generateRandomRarity());
+    }
 
     public RunicBoots(Rarity rarity) {
+        init(rarity);
+    }
+
+    private void init(Rarity rarity) {
         setName("Runic Boots");
-        setDescription("Сапоги, хранящие магическую руну. Увеличивают мана-реген и броню."); // ДОписать
+        setDescription(DescriptionUtil.RUNIC_BOOTS(this));
         setRarity(rarity);
         setTypeItem(TypeItem.Boot);
         setQuantity(1);
@@ -20,9 +29,9 @@ public class RunicBoots extends Robes {
     protected void applyStats(Rarity rarity) {
         var bonus = RarityUtils.applyRarityBonus(rarity, 0, 60, 2, 0.15, 20, 130);
         setDurability(bonus.durability());
-        setBonusArmour(bonus.bonus1());
-        setBonusRegenMana(bonus.bonus2());
-        setBonusMana(bonus.bonus3());
+        setArmour(bonus.bonus1());
+        setRegenMana(bonus.bonus2());
+        setMana((int) bonus.bonus3());
         setPrice(bonus.costItem());
     }
 
@@ -35,4 +44,5 @@ public class RunicBoots extends Robes {
     public void ifUse() {
 
     }
+
 }

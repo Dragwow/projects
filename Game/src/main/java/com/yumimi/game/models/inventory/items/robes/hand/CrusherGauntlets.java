@@ -1,15 +1,24 @@
 package com.yumimi.game.models.inventory.items.robes.hand;
 
-import com.yumimi.game.utils.enums.Rarity;
-import com.yumimi.game.models.inventory.items.RarityUtils;
-import com.yumimi.game.utils.enums.TypeItem;
-import com.yumimi.game.models.inventory.items.robes.Robes;
+import com.yumimi.game.util.descriptions.DescriptionUtil;
+import com.yumimi.game.util.enums.Rarity;
+import com.yumimi.game.util.rarity.RarityUtils;
+import com.yumimi.game.util.enums.TypeItem;
+import com.yumimi.game.models.inventory.items.robes.Robe;
 
-public class CrusherGauntlets extends Robes {
+public class CrusherGauntlets extends Robe {
+
+    public CrusherGauntlets(){
+        init(RarityUtils.generateRandomRarity());
+    }
 
     public CrusherGauntlets(Rarity rarity) {
+        init(rarity);
+    }
+
+    private void init(Rarity rarity) {
         setName("Crusher Gauntlets");
-        setDescription("Крушительные перчатки. Усиливают силу и броню."); // Дописать
+        setDescription(DescriptionUtil.CRUSHER_GAUNTLETS(this));
         setRarity(rarity);
         setTypeItem(TypeItem.Hand);
         setQuantity(1);
@@ -20,9 +29,9 @@ public class CrusherGauntlets extends Robes {
     protected void applyStats(Rarity rarity) {
         var bonus = RarityUtils.applyRarityBonus(rarity, 0, 60, 6, 5, 0.05, 150);
         setDurability(bonus.durability());
-        setBonusStrength(bonus.bonus1());
-        setBonusArmour(bonus.bonus2());
-        setBonusCritDamage(bonus.bonus3());
+        setStrength(bonus.bonus1());
+        setArmour((int) bonus.bonus2());
+        setCritDamage(bonus.bonus3());
         setPrice(bonus.costItem());
     }
 

@@ -3,7 +3,8 @@ package com.yumimi.game.service.impl;
 import com.yumimi.game.models.character.Elf;
 import com.yumimi.game.models.character.Human;
 import com.yumimi.game.models.character.Race;
-import com.yumimi.game.models.inventory.items.ItemFabric;
+import com.yumimi.game.models.inventory.items.ItemFactory;
+import com.yumimi.game.models.inventory.items.weapon.WeaponFactory;
 import com.yumimi.game.service.CharacterFactoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CharacterFactoryServiceImpl implements CharacterFactoryService {
 
-    private final ItemFabric itemFabric;
+    private final WeaponFactory weaponFactory;
 
 
     @Override
@@ -26,8 +27,8 @@ public class CharacterFactoryServiceImpl implements CharacterFactoryService {
     @Override
     public Race selectCharacter(String raceName) {
         return switch (raceName.toLowerCase()){
-            case "elf" -> new Elf(itemFabric);
-            case "human" -> new Human(itemFabric);
+            case "elf" -> new Elf(weaponFactory);
+            case "human" -> new Human(weaponFactory);
             default -> throw new IllegalArgumentException("Неизвестная раса: " + raceName);
         };
 

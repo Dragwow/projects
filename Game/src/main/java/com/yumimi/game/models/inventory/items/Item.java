@@ -1,7 +1,7 @@
 package com.yumimi.game.models.inventory.items;
 
-import com.yumimi.game.utils.enums.Rarity;
-import com.yumimi.game.utils.enums.TypeItem;
+import com.yumimi.game.util.enums.Rarity;
+import com.yumimi.game.util.enums.TypeItem;
 
 public interface Item {
 
@@ -13,4 +13,12 @@ public interface Item {
 
     void setEquipped(boolean b);
     int getPrice();
+
+    int getQuantity();
+    void setQuantity(int quantity);
+
+    default boolean isStackable(){
+        return false;
+    }
+
 }

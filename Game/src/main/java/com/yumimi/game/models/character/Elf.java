@@ -1,12 +1,13 @@
 package com.yumimi.game.models.character;
 
 import com.yumimi.game.models.inventory.items.Item;
-import com.yumimi.game.models.inventory.items.ItemFabric;
-import com.yumimi.game.utils.enums.TypeDamage;
+import com.yumimi.game.models.inventory.items.weapon.WeaponFactory;
+import com.yumimi.game.util.enums.PrimaryStat;
+import com.yumimi.game.util.enums.TypeDamage;
 
 public class Elf extends Race{
 
-    public Elf(ItemFabric itemFabric){
+    public Elf(WeaponFactory itemFabric){
         super(itemFabric);
         setName("Elf");
         setIntelligence(8);
@@ -17,10 +18,11 @@ public class Elf extends Race{
         setArmour(2);
         setTypeDamage(TypeDamage.Magic);
         setDamage(10);
+        setPrimaryStat(PrimaryStat.Intelligence);
     }
 
     @Override
     public Item generateStarterWeapon() {
-        return null;
+        return weaponFactory.generateMagicWeapon();
     }
 }

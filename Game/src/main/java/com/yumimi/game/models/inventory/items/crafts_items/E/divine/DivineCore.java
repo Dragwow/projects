@@ -1,18 +1,17 @@
 package com.yumimi.game.models.inventory.items.crafts_items.E.divine;
 
 import com.yumimi.game.models.inventory.items.crafts_items.CraftItems;
-import com.yumimi.game.utils.enums.Rarity;
-import com.yumimi.game.utils.enums.TypeItem;
+import com.yumimi.game.util.enums.CraftItemsType;
+import com.yumimi.game.util.enums.Rarity;
+import com.yumimi.game.util.enums.TypeItem;
 
 public class DivineCore extends CraftItems {
 
     public DivineCore() {
         setName("Divine Core");
-        setRarity(Rarity.Divine);
+        setItem(CraftItemsType.DivineCore);
+        setRarity(Rarity.DIVINE);
         setTypeItem(TypeItem.Craft_item);
-        setDamage(40);
-        setBonusCritDamage(15);
-        setBonusIntelligence(25);
         setPrice(350);
     }
     // Используется в: CrystalOrb, EmberCore
@@ -21,4 +20,5 @@ public class DivineCore extends CraftItems {
     public void inUses() {
 
     }
+
 }

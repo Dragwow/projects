@@ -1,18 +1,17 @@
 package com.yumimi.game.models.inventory.items.crafts_items.B.rare;
 
 import com.yumimi.game.models.inventory.items.crafts_items.CraftItems;
-import com.yumimi.game.utils.enums.Rarity;
-import com.yumimi.game.utils.enums.TypeItem;
+import com.yumimi.game.util.enums.CraftItemsType;
+import com.yumimi.game.util.enums.Rarity;
+import com.yumimi.game.util.enums.TypeItem;
 
 public class ColdShard extends CraftItems {
 
     public ColdShard() {
         setName("Cold Shard");
-        setRarity(Rarity.Rare);
+        setItem(CraftItemsType.ColdShard);
+        setRarity(Rarity.RARE);
         setTypeItem(TypeItem.Craft_item);
-        setBonusIntelligence(2);
-        setBonusRegenMana(0.3);
-        setBonusBlockChance(0.2);
         setPrice(30);
     }
     // Используется в: FrostbiteWand, FrozenAmulet
@@ -21,4 +20,5 @@ public class ColdShard extends CraftItems {
     public void inUses() {
 
     }
+
 }

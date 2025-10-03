@@ -1,15 +1,24 @@
 package com.yumimi.game.models.inventory.items.robes.ring;
 
-import com.yumimi.game.utils.enums.Rarity;
-import com.yumimi.game.models.inventory.items.RarityUtils;
-import com.yumimi.game.utils.enums.TypeItem;
-import com.yumimi.game.models.inventory.items.robes.Robes;
+import com.yumimi.game.util.descriptions.DescriptionUtil;
+import com.yumimi.game.util.enums.Rarity;
+import com.yumimi.game.util.rarity.RarityUtils;
+import com.yumimi.game.util.enums.TypeItem;
+import com.yumimi.game.models.inventory.items.robes.Robe;
 
-public class RingOfPower extends Robes {
+public class RingOfPower extends Robe {
+
+    public RingOfPower(){
+        init(RarityUtils.generateRandomRarity());
+    }
 
     public RingOfPower(Rarity rarity) {
+        init(rarity);
+    }
+
+    private void init(Rarity rarity) {
         setName("Ring of Power");
-        setDescription("Кольцо силы. Сильный буст к атакующим статам."); // Дописать
+        setDescription(DescriptionUtil.RING_OF_POWER(this));
         setRarity(rarity);
         setTypeItem(TypeItem.Ring);
         setQuantity(1);
@@ -20,9 +29,9 @@ public class RingOfPower extends Robes {
     protected void applyStats(Rarity rarity) {
         var bonus = RarityUtils.applyRarityBonus(rarity, 0, 60, 7, 0.06, 0.12, 160);
         setDurability(bonus.durability());
-        setBonusStrength(bonus.bonus1());
-        setBonusCritChance(bonus.bonus2());
-        setBonusCritDamage(bonus.bonus3());
+        setStrength(bonus.bonus1());
+        setCritChance(bonus.bonus2());
+        setCritDamage(bonus.bonus3());
         setPrice(bonus.costItem());
     }
 

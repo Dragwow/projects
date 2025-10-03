@@ -1,13 +1,15 @@
 package com.yumimi.game.models.character;
 
 import com.yumimi.game.models.inventory.items.Item;
-import com.yumimi.game.models.inventory.items.ItemFabric;
-import com.yumimi.game.utils.enums.TypeDamage;
+import com.yumimi.game.models.inventory.items.ItemFactory;
+import com.yumimi.game.models.inventory.items.weapon.WeaponFactory;
+import com.yumimi.game.util.enums.PrimaryStat;
+import com.yumimi.game.util.enums.TypeDamage;
 
 public class Human extends Race{
 
-    public Human(ItemFabric itemFabric){
-        super(itemFabric);
+    public Human(WeaponFactory weaponFactory){
+        super(weaponFactory);
         setName("Human");
         setIntelligence(10);
         setStrength(10);
@@ -17,10 +19,11 @@ public class Human extends Race{
         setArmour(7);
         setTypeDamage(TypeDamage.Melee);
         setDamage(8);
+        setPrimaryStat(PrimaryStat.Strength);
     }
 
     @Override
     public Item generateStarterWeapon() {
-        return itemFabric.generateMeleeItem();
+        return weaponFactory.generateMeleeWeapon();
     }
 }

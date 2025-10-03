@@ -1,7 +1,11 @@
 package com.yumimi.game.config;
 
-import com.yumimi.game.models.inventory.Equipment;
-import com.yumimi.game.models.inventory.items.ItemFabric;
+import com.yumimi.game.models.inventory.Inventory;
+import com.yumimi.game.models.inventory.items.crafts_items.CraftItemFactory;
+import com.yumimi.game.models.inventory.items.magic_items.MagicItemFactory;
+import com.yumimi.game.models.inventory.items.potion.PotionFactory;
+import com.yumimi.game.models.inventory.items.robes.RobeFactory;
+import com.yumimi.game.models.inventory.items.weapon.WeaponFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,12 +13,22 @@ import org.springframework.context.annotation.Configuration;
 public class Config {
 
     @Bean
-    public Equipment equipment() {
-        return new Equipment();
-    }
+    public Inventory inventory(){return new Inventory();}
 
     @Bean
-    public ItemFabric itemFabric(){
-        return new ItemFabric();
-    }
+    public WeaponFactory weaponFactory(){return new WeaponFactory();}
+
+    @Bean
+    public CraftItemFactory craftItemFactory(){return new CraftItemFactory();}
+
+    @Bean
+    public MagicItemFactory magicItemFactory(){return new MagicItemFactory();}
+
+    @Bean
+    public PotionFactory potionFactory(){return new PotionFactory();}
+
+    @Bean
+    public RobeFactory robeFactory(){return new RobeFactory();}
+
+
 }

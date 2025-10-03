@@ -1,8 +1,10 @@
 package com.yumimi.game.models.character;
 
 import com.yumimi.game.models.inventory.items.Item;
-import com.yumimi.game.models.inventory.items.ItemFabric;
-import com.yumimi.game.utils.enums.TypeDamage;
+import com.yumimi.game.models.inventory.items.ItemFactory;
+import com.yumimi.game.models.inventory.items.weapon.WeaponFactory;
+import com.yumimi.game.util.enums.PrimaryStat;
+import com.yumimi.game.util.enums.TypeDamage;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,21 +12,23 @@ import lombok.Setter;
 @Setter
 public abstract class Race {
 
-    protected ItemFabric itemFabric;
+    protected WeaponFactory weaponFactory;
 
-    public Race(ItemFabric itemFabric){
-        this.itemFabric = itemFabric;
+    public Race(WeaponFactory weaponFactory){
+        this.weaponFactory = weaponFactory;
     }
 
     private String name;
-    private double intelligence;
-    private double strength;
-    private double dexterity;
+    private int intelligence;
+    private int strength;
+    private int dexterity;
     private int hp;
     private int mana;
-    private double armour;
+    private int armour;
     private TypeDamage typeDamage;
-    private double damage;
+    private int damage;
+
+    private PrimaryStat primaryStat;
 
     public abstract Item generateStarterWeapon();
 

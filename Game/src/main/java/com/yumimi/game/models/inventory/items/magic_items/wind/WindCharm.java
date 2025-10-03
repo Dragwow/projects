@@ -1,20 +1,29 @@
 package com.yumimi.game.models.inventory.items.magic_items.wind;
 
-import com.yumimi.game.utils.enums.Rarity;
-import com.yumimi.game.models.inventory.items.RarityUtils;
-import com.yumimi.game.utils.enums.TypeItem;
+import com.yumimi.game.util.descriptions.DescriptionUtil;
+import com.yumimi.game.util.enums.Rarity;
+import com.yumimi.game.util.rarity.RarityUtils;
+import com.yumimi.game.util.enums.TypeItem;
 import com.yumimi.game.models.inventory.items.magic_items.MagicItems;
-import com.yumimi.game.utils.enums.MagicType;
+import com.yumimi.game.util.enums.MagicType;
 
-public class WindCharm extends MagicItems {
+public class WindCharm extends MagicItems{
+
+    public WindCharm(){
+        init(RarityUtils.generateRandomRarity());
+    }
 
     public WindCharm(Rarity rarity) {
+        init(rarity);
+    }
+
+    private void init(Rarity rarity) {
         setName("Wind Charm");
-        setDescription("Амулет с заклинанием воздушного потока."); // Дописать
         setRarity(rarity);
         setTypeItem(TypeItem.Magic_item);
         setMagicType(MagicType.Wind);
         applyStats(rarity);
+        setDescription(DescriptionUtil.WIND_CHARM(this));
         setQuantity(1);
         setEquipped(false);
     }
@@ -22,10 +31,10 @@ public class WindCharm extends MagicItems {
     protected void applyStats(Rarity rarity) {
         var bonus = RarityUtils.applyRarityBonus(rarity, 0, 75, 7, 20, 0.05, 0.1, 110);
         setDurability(bonus.durability());
-        setBonusIntelligence(bonus.bonus1());
-        setBonusDexterity(bonus.bonus2());
-        setBonusEvasion(bonus.bonus3());
-        setBonusRegenMana(bonus.bonus4());
+        setIntelligence(bonus.bonus1());
+        setDexterity((int) bonus.bonus2());
+        setEvasion(bonus.bonus3());
+        setRegenMana(bonus.bonus4());
         setPrice(bonus.costItem());
     }
 
@@ -34,6 +43,7 @@ public class WindCharm extends MagicItems {
 
     }
 
+    // 🌬 Пассивка: "Порыв ветра" — +5% уклонения и шанс уклониться от любого контроля.
     @Override
     public void events() {
 
@@ -44,6 +54,8 @@ public class WindCharm extends MagicItems {
 
     }
 
-    // 🌬 Пассивка: "Порыв ветра" — +5% уклонения и шанс уклониться от любого контроля.
+
+
+
 }
 

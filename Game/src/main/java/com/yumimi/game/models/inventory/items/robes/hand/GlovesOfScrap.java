@@ -1,15 +1,24 @@
 package com.yumimi.game.models.inventory.items.robes.hand;
 
-import com.yumimi.game.utils.enums.Rarity;
-import com.yumimi.game.models.inventory.items.RarityUtils;
-import com.yumimi.game.utils.enums.TypeItem;
-import com.yumimi.game.models.inventory.items.robes.Robes;
+import com.yumimi.game.util.descriptions.DescriptionUtil;
+import com.yumimi.game.util.enums.Rarity;
+import com.yumimi.game.util.rarity.RarityUtils;
+import com.yumimi.game.util.enums.TypeItem;
+import com.yumimi.game.models.inventory.items.robes.Robe;
 
-public class GlovesOfScrap extends Robes {
+public class GlovesOfScrap extends Robe {
+
+    public GlovesOfScrap(){
+        init(RarityUtils.generateRandomRarity());
+    }
 
     public GlovesOfScrap(Rarity rarity) {
+        init(rarity);
+    }
+
+    private void init(Rarity rarity) {
         setName("Gloves of Scrap");
-        setDescription("Перчатки из обломков. Немного всего."); // Доаисать
+        setDescription(DescriptionUtil.GLOVES_OF_SCRAP(this));
         setRarity(rarity);
         setTypeItem(TypeItem.Hand);
         setQuantity(1);
@@ -20,9 +29,9 @@ public class GlovesOfScrap extends Robes {
     protected void applyStats(Rarity rarity) {
         var bonus = RarityUtils.applyRarityBonus(rarity, 0, 40, 2, 2, 2, 100);
         setDurability(bonus.durability());
-        setBonusStrength(bonus.bonus1());
-        setBonusIntelligence(bonus.bonus2());
-        setBonusDexterity(bonus.bonus3());
+        setStrength(bonus.bonus1());
+        setIntelligence((int) bonus.bonus2());
+        setDexterity((int) bonus.bonus3());
         setPrice(bonus.costItem());
     }
 
@@ -35,4 +44,5 @@ public class GlovesOfScrap extends Robes {
     public void ifUse() {
 
     }
+
 }

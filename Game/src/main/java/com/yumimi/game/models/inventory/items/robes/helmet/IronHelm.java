@@ -1,28 +1,38 @@
 package com.yumimi.game.models.inventory.items.robes.helmet;
 
-import com.yumimi.game.utils.enums.Rarity;
-import com.yumimi.game.models.inventory.items.RarityUtils;
-import com.yumimi.game.utils.enums.TypeItem;
-import com.yumimi.game.models.inventory.items.robes.Robes;
+import com.yumimi.game.util.descriptions.DescriptionUtil;
+import com.yumimi.game.util.enums.Rarity;
+import com.yumimi.game.util.rarity.RarityUtils;
+import com.yumimi.game.util.enums.TypeItem;
+import com.yumimi.game.models.inventory.items.robes.Robe;
 
-public class IronHelm extends Robes {
+public class IronHelm extends Robe {
+
+    public IronHelm(){
+        init(RarityUtils.generateRandomRarity());
+    }
 
     public IronHelm(Rarity rarity) {
+        init(rarity);
+    }
+
+    private void init(Rarity rarity) {
         setName("Iron Helm");
-        setDescription("Простой железный шлем. Повышает броню и хп."); // Дописать
+        setDescription(DescriptionUtil.IRON_HELM(this));
         setRarity(rarity);
         setTypeItem(TypeItem.Helmet);
         setQuantity(1);
         setEquipped(false);
         applyStats(rarity);
+
     }
 
     protected void applyStats(Rarity rarity) {
         var bonus = RarityUtils.applyRarityBonus(rarity, 0, 70, 6, 30, 0.04, 110);
         setDurability(bonus.durability());
-        setBonusArmour(bonus.bonus1());
-        setBonusHp(bonus.bonus2());
-        setBonusBlockChance(bonus.bonus3());
+        setArmour(bonus.bonus1());
+        setHp((int) bonus.bonus2());
+        setBlockChance(bonus.bonus3());
         setPrice(bonus.costItem());
     }
 

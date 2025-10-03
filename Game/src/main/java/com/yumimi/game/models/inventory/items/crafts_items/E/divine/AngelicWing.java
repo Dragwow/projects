@@ -1,18 +1,17 @@
 package com.yumimi.game.models.inventory.items.crafts_items.E.divine;
 
 import com.yumimi.game.models.inventory.items.crafts_items.CraftItems;
-import com.yumimi.game.utils.enums.Rarity;
-import com.yumimi.game.utils.enums.TypeItem;
+import com.yumimi.game.util.enums.CraftItemsType;
+import com.yumimi.game.util.enums.Rarity;
+import com.yumimi.game.util.enums.TypeItem;
 
 public class AngelicWing extends CraftItems {
 
     public AngelicWing() {
         setName("Angelic Wing");
-        setRarity(Rarity.Divine);
+        setItem(CraftItemsType.AngelicWing);
+        setRarity(Rarity.DIVINE);
         setTypeItem(TypeItem.Craft_item);
-        setBonusDexterity(20);
-        setBonusEvasion(10);
-        setBonusRegenMana(1);
         setPrice(320);
     }
     // Используется в: RunicBoots, WindCharm
@@ -21,4 +20,5 @@ public class AngelicWing extends CraftItems {
     public void inUses() {
 
     }
+
 }

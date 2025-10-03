@@ -1,15 +1,24 @@
 package com.yumimi.game.models.inventory.items.robes.boot;
 
-import com.yumimi.game.utils.enums.Rarity;
-import com.yumimi.game.models.inventory.items.RarityUtils;
-import com.yumimi.game.utils.enums.TypeItem;
-import com.yumimi.game.models.inventory.items.robes.Robes;
+import com.yumimi.game.util.descriptions.DescriptionUtil;
+import com.yumimi.game.util.enums.Rarity;
+import com.yumimi.game.util.rarity.RarityUtils;
+import com.yumimi.game.util.enums.TypeItem;
+import com.yumimi.game.models.inventory.items.robes.Robe;
 
-public class SteelBoots extends Robes {
+public class SteelBoots extends Robe {
+
+    public SteelBoots(){
+        init(RarityUtils.generateRandomRarity());
+    }
 
     public SteelBoots(Rarity rarity) {
+        init(rarity);
+    }
+
+    private void init(Rarity rarity) {
         setName("Steel Boots");
-        setDescription("Укрепленные стальные сапоги. Дают броню и шанс блока."); // Дописать
+        setDescription(DescriptionUtil.STEEL_BOOTS(this));
         setRarity(rarity);
         setTypeItem(TypeItem.Boot);
         setQuantity(1);
@@ -20,8 +29,8 @@ public class SteelBoots extends Robes {
     protected void applyStats(Rarity rarity) {
         var bonus = RarityUtils.applyRarityBonus(rarity, 0, 70, 6, 0.06, 0, 130);
         setDurability(bonus.durability());
-        setBonusArmour(bonus.bonus1());
-        setBonusBlockChance(bonus.bonus2());
+        setArmour(bonus.bonus1());
+        setBlockChance(bonus.bonus2());
         setPrice(bonus.costItem());
     }
 
@@ -34,4 +43,5 @@ public class SteelBoots extends Robes {
     public void ifUse() {
 
     }
+
 }
