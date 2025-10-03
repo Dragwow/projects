@@ -1,0 +1,50 @@
+package com.yumimi.game.util.enums;
+
+public enum CraftItemsType {
+    BronzePlating,
+    ClothStrap,
+    CrackedLens,
+    GoblinFang,
+    IronFragment,
+    MagicDust,
+    ManaHerb,
+    OldRibbon,
+    RustyGear,
+    StoneShard,
+    TwistedFiber,
+    WoodHandle,
+
+    ColdShard,
+    EnchantedOrb,
+    MoltenCore,
+    RadiantGem,
+    RefinedMetal,
+    ReinforcedLeather,
+    SacredHerb,
+    ShadowEssence,
+    SilverDust,
+    StaticCore,
+    ViciousClaw,
+
+    ArcaneCrystal,
+    BlessedPetal,
+    HardenedHide,
+    LightningCore,
+    ReinforcedSteel,
+    ShadowFragment,
+    ToxicResidue,
+    WindEssence,
+
+    DemonHorn,
+    DragonScale,
+    EternalFlame,
+    PhoenixFeather,
+    TitanSteel,
+    VoidEssence,
+
+    AngelicWing,
+    CelestialStone,
+    DivineCore,
+    SacredBlood,
+    TearOfHeaven
+}
